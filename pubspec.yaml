@@ -1,10 +1,10 @@
 name: stroage
 description: A new Flutter plugin project.
 version: 0.0.1
-homepage:
+homepage: x
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.2 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
@@ -39,6 +39,9 @@ flutter:
         pluginClass: StroagePlugin
       ios:
         pluginClass: StroagePlugin
+      web:
+        pluginClass: StroageWeb
+        fileName: url_launcher_web.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
