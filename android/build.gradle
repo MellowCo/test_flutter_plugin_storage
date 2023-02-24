@@ -21,6 +21,11 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+dependencies {
+    compileOnly files('libs\\flutter.jar')
+    compileOnly 'androidx.annotation:annotation:1.1.0'
+}
+
 android {
     compileSdkVersion 31
 

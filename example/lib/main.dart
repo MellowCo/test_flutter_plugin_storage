@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   final _stroagePlugin = Stroage();
+  int count = 0;
 
   @override
   void initState() {
@@ -56,19 +57,69 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
                 onPressed: () async {
                   try {
-                    String str = await _stroagePlugin.sayHello() ??
-                        'Unknown platform version';
+                    String str = await _stroagePlugin.sayHello() ?? '';
                     print("flutter hello: $str");
                   } catch (e) {
                     print("flutter hello error: $e");
                   }
                 },
                 child: const Text('hello')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    String str = await _stroagePlugin.getPlatform() ?? '';
+                    print("flutter hello: $str");
+                  } on UnimplementedError {
+                    print("该平台暂不支持该功能");
+                  }
+                },
+                child: const Text('platform')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    String value =
+                        await _stroagePlugin.get("stroage_key") ?? '';
+                    print("flutter get value: $value");
+                  } catch (e) {
+                    print("flutter get error: $e");
+                  }
+                },
+                child: const Text('get')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await _stroagePlugin.set("stroage_key", "$count") ?? '';
+                    setState(() {
+                      count = count + 1;
+                    });
+                  } catch (e) {
+                    print("flutter get error: $e");
+                  }
+                },
+                child: const Text('set')),
+            const SizedBox(
+              height: 20,
+            ),
             Center(
               child: Text('Running on: $_platformVersion\n'),
+            ),
+            Center(
+              child: Text('count: $count\n'),
             ),
           ],
         ),

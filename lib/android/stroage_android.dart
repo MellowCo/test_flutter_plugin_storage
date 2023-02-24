@@ -23,4 +23,23 @@ class StroageAndroid extends StroagePlatform {
   Future<String?> sayHello() async {
     return "StroageAndroid say hello";
   }
+
+  @override
+  Future<String?> getPlatform() async {
+    return "StroageAndroid 安卓平台";
+  }
+
+  @override
+  Future<String?> get(String key) async {
+    final value = await methodChannel
+        .invokeMethod<String>('get', <String, String>{'key': key});
+    return value;
+  }
+
+  @override
+  Future<String?> set(String key, String value) async {
+    await methodChannel.invokeMethod<String>(
+        'set', <String, dynamic>{'key': key, 'value': value});
+    return null;
+  }
 }
