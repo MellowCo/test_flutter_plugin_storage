@@ -1,8 +1,3 @@
-
-import 'stroage_platform_interface.dart';
-
-class Stroage {
-  Future<String?> getPlatformVersion() {
-    return StroagePlatform.instance.getPlatformVersion();
-  }
-}
+export 'android/stroage_android.dart';
+export 'ios/stroage_ios.dart';
+export 'src/stroage.dart';

@@ -6,9 +6,8 @@ import 'dart:html' as html show window;
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-import 'stroage_platform_interface.dart';
+import '../src/stroage_platform_interface.dart';
 
-/// A web implementation of the StroagePlatform of the Stroage plugin.
 class StroageWeb extends StroagePlatform {
   /// Constructs a StroageWeb
   StroageWeb();
@@ -22,5 +21,10 @@ class StroageWeb extends StroagePlatform {
   Future<String?> getPlatformVersion() async {
     final version = html.window.navigator.userAgent;
     return version;
+  }
+
+  @override
+  Future<String?> sayHello() async {
+    return "StroageWeb say hello";
   }
 }

@@ -26,4 +26,8 @@ abstract class StroagePlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<String?> sayHello() {
+    throw UnimplementedError('sayHello() has not been implemented.');
+  }
 }

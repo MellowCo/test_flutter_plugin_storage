@@ -31,8 +31,8 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _stroagePlugin.getPlatformVersion() ?? 'Unknown platform version';
+      platformVersion = await _stroagePlugin.getPlatformVersion() ??
+          'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
@@ -54,8 +54,23 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () async {
+                  try {
+                    String str = await _stroagePlugin.sayHello() ??
+                        'Unknown platform version';
+                    print("flutter hello: $str");
+                  } catch (e) {
+                    print("flutter hello error: $e");
+                  }
+                },
+                child: const Text('hello')),
+            Center(
+              child: Text('Running on: $_platformVersion\n'),
+            ),
+          ],
         ),
       ),
     );

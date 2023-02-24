@@ -11,7 +11,13 @@ class MethodChannelStroage extends StroagePlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
+  }
+
+  @override
+  Future<String?> sayHello() async {
+    return "MethodChannelStroage say hello";
   }
 }
