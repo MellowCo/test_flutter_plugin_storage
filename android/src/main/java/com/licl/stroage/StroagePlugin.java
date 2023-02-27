@@ -14,7 +14,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 
 /** StroagePlugin */
-public class StroagePlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
+public class StroagePlugin implements FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -36,7 +36,7 @@ public class StroagePlugin implements FlutterPlugin, MethodCallHandler, Activity
         result.success("Android " + android.os.Build.VERSION.RELEASE);
         break;
       case "get":{
-        result.success("Android " + preferences.getString(call.argument("key"),"安卓中没有数据"));
+        result.success("Android中的数据: " + preferences.getString(call.argument("key"),"安卓中没有数据"));
         break;
       }
       case "set":{
@@ -57,25 +57,5 @@ public class StroagePlugin implements FlutterPlugin, MethodCallHandler, Activity
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
-  }
-
-  @Override
-  public void onAttachedToActivity(@NonNull ActivityPluginBinding activityPluginBinding) {
-
-  }
-
-  @Override
-  public void onDetachedFromActivityForConfigChanges() {
-
-  }
-
-  @Override
-  public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding activityPluginBinding) {
-
-  }
-
-  @Override
-  public void onDetachedFromActivity() {
-
   }
 }
