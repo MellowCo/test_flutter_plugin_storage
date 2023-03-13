@@ -1,6 +1,10 @@
 # flutter 插件开发
 
 > 实现 localStorage 的功能
+>
+> web: 使用 [localstorage](https://www.runoob.com/w3cnote/localstorage-spec.html)
+>
+> android： 使用 [SharedPreferences](https://www.jianshu.com/p/7daf91349065)
 
 ## 创建插件项目
 
@@ -47,8 +51,6 @@ dependencies {
 android.useAndroidX=true
 android.enableJetifier=true
 ```
-
-
 
 
 
@@ -241,5 +243,4 @@ flutter:
         pluginClass: StroageWeb
         fileName: stroage_web.dart
 ```
-
 
